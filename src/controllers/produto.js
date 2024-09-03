@@ -13,7 +13,6 @@ const store = (body) => {
         db.push(novo)
         return 201
     }
-
     return 400
 }
 
@@ -25,15 +24,16 @@ const update = (body, id) => {
         db[indice] = novo
         return 200
     }
-
-    return 400
+    return 404
 }
 
 const destroy = id => {
     const indice = db.findIndex(el => el.id == id)
     if (indice != -1) {
         db.splice(indice, 1)
+        return 200
     }
+    return 404
 }
 
 module.exports = {
